@@ -17,6 +17,15 @@ function counterReducer(state = 0, action) {
 
 const addItemAction = (item) => ({ type: 'ADD_ITEM', payload: item });
 
+function listReducer(state = [], action) {
+	switch (action.type) {
+		case 'ADD_ITEM':
+			return [...state, action.payload];
+		default:
+			return state;
+	}
+}
+
 const store = createStore(counterReducer);
 store.subscribe(() => console.log(store.getState()));
 
