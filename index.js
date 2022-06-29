@@ -1,5 +1,6 @@
 const redux = require('redux');
 const createStore = redux.createStore;
+const combineReducers = redux.combineReducers;
 
 const incrementAction = (value) => ({ type: 'INCREMENT', payload: value || 1 });
 const decrementAction = (value) => ({ type: 'DECREMENT', payload: value || 1 });
@@ -25,8 +26,11 @@ function listReducer(state = [], action) {
 			return state;
 	}
 }
-
-const store = createStore(counterReducer);
+const allReducers = combineReducers({
+	counter: counterReducer,
+	list: listReducer,
+});
+const store = createStore(allReducers);
 store.subscribe(() => console.log(store.getState()));
 
 store.dispatch(incrementAction(10));
