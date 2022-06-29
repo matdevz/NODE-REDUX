@@ -1,22 +1,22 @@
 const redux = require('redux');
-const createSore = redux.createStore;
+const createStore = redux.createStore;
 
-const incrementAction = { type: 'INCREMENT' };
-const decrementAction = { type: 'DECREMENT' };
+const incrementAction = (value) => ({ type: 'INCREMENT', payload: value || 1 });
+const decrementAction = (value) => ({ type: 'DECREMENT', payload: value || 1 });
 
 function counterReducer(state = 0, action) {
 	switch (action.type) {
 		case 'INCREMENT':
-			return state + 1;
+			return state + action.payload;
 		case 'DECREMENT':
-			return state - 1;
+			return state - action.payload;
 		default:
 			return state;
 	}
 }
 
-const store = createSore(counterReducer);
+const store = createStore(counterReducer);
 store.subscribe(() => console.log(store.getState()));
 
-store.dispatch(incrementAction);
-store.dispatch(decrementAction);
+store.dispatch(incrementAction(10));
+store.dispatch(decrementAction(7));
