@@ -1,0 +1,16 @@
+{
+	"name": "node-redux",
+	"version": "1.0.0",
+	"main": "index.js",
+	"license": "MIT",
+	"dependencies": {
+		"redux": "^4.2.0"
+	},
+	"devDependencies": {
+		"nodemon": "^2.0.18"
+	},
+	"scripts": {
+		"start": "node index.js",
+		"dev": "nodemon index.js"
+	}
+}
