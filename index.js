@@ -15,6 +15,8 @@ function counterReducer(state = 0, action) {
 	}
 }
 
+const addItemAction = (item) => ({ type: 'ADD_ITEM', payload: item });
+
 const store = createStore(counterReducer);
 store.subscribe(() => console.log(store.getState()));
 
